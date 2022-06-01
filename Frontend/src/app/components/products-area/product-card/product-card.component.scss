@@ -1,0 +1,25 @@
+div {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    height: 150px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px grey;
+    overflow: auto;
+    background-image: linear-gradient(darkcyan, cyan);
+    text-align: left;
+    position: relative;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    font-size: large;
+    cursor: pointer;
+}

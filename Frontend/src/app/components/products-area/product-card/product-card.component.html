@@ -1,0 +1,8 @@
+<div>
+    <span>Name: {{product.name}}</span><br>
+    <span>Price: {{product.price | currency: "USD"}}</span><br>
+    <span>Good From: {{product.fromDate | date}}</span><br>
+    <span>Expiration Date: {{product.expDate | date }}</span><br>
+    <span>Category: {{product.category.name}}</span><br>
+    <button (click)="deleteProduct(product._id)">🚮</button>
+</div>

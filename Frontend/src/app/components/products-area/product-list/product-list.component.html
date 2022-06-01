@@ -1,0 +1,10 @@
+<div>
+    <label>Select Category</label>
+    <select (change)="getProducts($event)">
+        <option disabled selected>Select...</option>
+        <option *ngFor="let c of categories" [value]="c._id">{{c.name}}</option>
+    </select>
+    <br><br>
+
+    <app-product-card *ngFor="let p of products" [product]="p" (deleteMe)="deleteThisProduct($event)"></app-product-card>
+</div>

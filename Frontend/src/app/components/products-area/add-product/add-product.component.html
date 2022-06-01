@@ -1,0 +1,35 @@
+<div class="box">
+    <form (ngSubmit)="addForm()" #formBox="ngForm">
+
+        <h2>Add product</h2>
+
+        <label>Select Category:</label>
+        <select name="categoryId" #categoryIdBox="ngModel" [(ngModel)]="product.categoryId" required>
+         <option selected disabled>Select...</option>
+         <option *ngFor="let c of categories" [value]="c._id">{{c.name}}</option>
+        </select>
+        <span *ngIf="categoryIdBox.touched && categoryIdBox.errors?.['required']">Missing category</span>
+
+        <label>Name:</label>
+        <input type="text" name="name" [(ngModel)]="product.name" #nameBox="ngModel" required minlength="2" maxlength="100">
+        <span *ngIf="nameBox.touched && nameBox.errors?.['required']">Missing name</span>
+        <span *ngIf="nameBox.touched && nameBox.errors?.['minlength']">Name too short</span>
+        <span *ngIf="nameBox.touched && nameBox.errors?.['maxlength']">Name too long</span>
+
+        <label>Price:</label>
+        <input type="number"  name="price" step="0.01" [(ngModel)]="product.price" #priceBox="ngModel" required min="0" max="1000">
+        <span *ngIf="priceBox.touched && priceBox.errors?.['required']">Missing Price</span>
+        <span *ngIf="priceBox.touched && priceBox.errors?.['min']">Price can't be negative</span>
+        <span *ngIf="priceBox.touched && priceBox.errors?.['max']">Price can't exceed 1000</span>
+
+        <label>Good From:</label>
+        <input type="datetime-local" name="fromDate" [(ngModel)]="product.fromDate" #fromDateBox="ngModel" required>
+        <span *ngIf="fromDateBox.touched && fromDateBox.errors?.['required']">Missing good from date</span>
+
+        <label>Expires on:</label>
+        <input type="datetime-local" name="expDate" [(ngModel)]="product.expDate" #expDateBox="ngModel" required>
+        <span *ngIf="expDateBox.touched && expDateBox.errors?.['required']">Missing expiration date</span>
+
+        <button [disabled]="formBox.invalid">Add</button>
+    </form>
+</div>
